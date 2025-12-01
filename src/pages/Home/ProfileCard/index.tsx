@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faBuilding, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faUser, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { TextM, TitleL } from "../../../components/Typography/style";
-import { ProfileCardContainer, UserInfo, UserLinks, UserPicture, UserInfoContainer } from "./style";
+import { ProfileCardContainer, UserLinks, UserPicture, UserInfoContainer, ExternalLink } from "./style";
 
 
 
@@ -11,14 +11,12 @@ export function ProfileCard(){
         <ProfileCardContainer>
             <UserPicture />
             <UserInfoContainer>
-                {/* <UserInfo> */}
-                    <TitleL>
-                        Cameron Williamson
-                    </TitleL>
-                    <TextM>
-                        Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
-                    </TextM>
-                {/* </UserInfo> */}
+                <TitleL>
+                    Cameron Williamson
+                </TitleL>
+                <TextM>
+                    Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
+                </TextM>
                 <UserLinks>
                     <span>
                         <FontAwesomeIcon icon={faGithub} />
@@ -32,6 +30,10 @@ export function ProfileCard(){
                         <FontAwesomeIcon icon={faUser} />
                         teste
                     </span>
+                    <ExternalLink>
+                        GITHUB
+                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    </ExternalLink>
                 </UserLinks>
             </UserInfoContainer>
         </ProfileCardContainer>

@@ -35,11 +35,6 @@ export const UserInfoContainer = styled.div`
         margin-top: 0.5rem;
     }
 `;
-export const UserInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-`;
 
 export const UserLinks = styled.div`
     display: flex;
@@ -50,4 +45,13 @@ export const UserLinks = styled.div`
         gap: 0.5rem;
         align-items: center;
     }
+`;
+
+export const ExternalLink = styled.span`
+    font-size: .75rem;
+    line-height: 160%;
+    color: ${props => props.theme["blue"]};
+    position: absolute;
+    right: 2rem;
+    top: 2.5rem;
 `;
