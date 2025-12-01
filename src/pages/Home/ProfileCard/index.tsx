@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faBuilding, faUser } from '@fortawesome/free-solid-svg-icons'
 import { TextM, TitleL } from "../../../components/Typography/style";
-import { ProfileCardContainer, UserInfo, UserLinks, UserPicture } from "./style";
+import { ProfileCardContainer, UserInfo, UserLinks, UserPicture, UserInfoContainer } from "./style";
 
 
 
@@ -9,20 +10,30 @@ export function ProfileCard(){
     return(
         <ProfileCardContainer>
             <UserPicture />
-            <UserInfo>
-                <TitleL>
-                    Teste
-                </TitleL>
-                <TextM>
-                    Description
-                </TextM>
-            </UserInfo>
-            <UserLinks>
-                <span>
-                    <FontAwesomeIcon icon={faGithub} />
-                    teste
-                </span>
-            </UserLinks>
+            <UserInfoContainer>
+                {/* <UserInfo> */}
+                    <TitleL>
+                        Cameron Williamson
+                    </TitleL>
+                    <TextM>
+                        Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
+                    </TextM>
+                {/* </UserInfo> */}
+                <UserLinks>
+                    <span>
+                        <FontAwesomeIcon icon={faGithub} />
+                        teste
+                    </span>
+                    <span>
+                        <FontAwesomeIcon icon={faBuilding} />
+                        teste
+                    </span>
+                    <span>
+                        <FontAwesomeIcon icon={faUser} />
+                        teste
+                    </span>
+                </UserLinks>
+            </UserInfoContainer>
         </ProfileCardContainer>
     );
 }
