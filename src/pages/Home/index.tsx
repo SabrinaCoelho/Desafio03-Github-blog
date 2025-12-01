@@ -1,7 +1,7 @@
+import { ProfileCard } from "./ProfileCard";
+
 export function Home(){
     return(
-        <h1>
-            hello warudo!
-        </h1>
+        <ProfileCard />
     )
 }
