@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { TextM, TitleL } from "../../../components/Typography/style";
 import { ProfileCardContainer, UserInfo, UserLinks, UserPicture } from "./style";
 
 
 
 export function ProfileCard(){
-    library.add(fas);
     return(
         <ProfileCardContainer>
             <UserPicture />
@@ -21,8 +19,7 @@ export function ProfileCard(){
             </UserInfo>
             <UserLinks>
                 <span>
-                    <FontAwesomeIcon icon="fa-solid fa-github" />
-                    <FontAwesomeIcon icon="fa-solid fa-dog" />
+                    <FontAwesomeIcon icon={faGithub} />
                     teste
                 </span>
             </UserLinks>
