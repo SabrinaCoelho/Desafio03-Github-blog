@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ProfileCardContainer = styled.div`
     position: relative;
-    margin: -3rem auto;
     padding: 2rem;
     background: ${props => props.theme["base-profile"]};
     border-radius: 10px;

@@ -1,7 +1,14 @@
+import { Card } from "./Card";
 import { ProfileCard } from "./ProfileCard";
+import { SearchForm } from "./SearchForm";
+import { HomeContainer } from "./styles";
 
 export function Home(){
     return(
-        <ProfileCard />
+        <HomeContainer>
+            <ProfileCard />
+            <SearchForm/>
+            <Card/>
+        </HomeContainer>
     )
 }
