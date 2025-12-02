@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const ProfileCardContainer = styled.div`
+export const MainCardBase = styled.div`
     position: relative;
     padding: 2rem;
     background: ${props => props.theme["base-profile"]};
     border-radius: 10px;
     max-width: 54rem;
 
+    
+`;
+export const ProfileCardContainer = styled(MainCardBase)`
     display: flex;
     gap: 2rem;
 `;
@@ -27,11 +30,24 @@ export const UserPicture = styled.div<ProfilePictureProps>`
 `;
 
 export const UserInfoContainer = styled.div`
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    display: flex;
+    flex-direction: column;
 
     h1{
         margin-top: 0.5rem;
+    }
+    p{
+        flex-grow: 1;
+    }
+`;
+
+export const UserInfoHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    span{
+        margin-top: .3125rem;
+        flex-shrink: 0;
     }
 `;
 
@@ -44,13 +60,4 @@ export const UserLinks = styled.div`
         gap: 0.5rem;
         align-items: center;
     }
-`;
-
-export const ExternalLink = styled.span`
-    font-size: .75rem;
-    line-height: 160%;
-    color: ${props => props.theme["blue"]};
-    position: absolute;
-    right: 2rem;
-    top: 2.5rem;
 `;
