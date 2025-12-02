@@ -12,7 +12,7 @@ background-image: url(${headerBackgroundImage});
     img{
         position: absolute;
 
-        top:23%;
+        top: 3.875rem;
         left: 50%;
         transform: translate(-50%, 0);
         height: auto;
