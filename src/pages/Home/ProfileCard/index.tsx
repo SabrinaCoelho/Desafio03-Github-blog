@@ -4,17 +4,19 @@ import { faArrowUpRightFromSquare, faBuilding, faUser } from '@fortawesome/free-
 import { TextM, TitleL } from "../../../components/Typography/style";
 import { ProfileCardContainer, UserLinks, UserPicture, UserInfoContainer, UserInfoHeader } from "./style";
 import { ExternalLink } from "../../../components/ExternalLink";
-
-
+import { useContext } from "react";
+import { RepoContext } from "../../../Contexts/RepoContext";
 
 export function ProfileCard(){
+    const {user} = useContext(RepoContext);
+    console.log(user);
     return(
         <ProfileCardContainer>
             <UserPicture />
             <UserInfoContainer>
                 <UserInfoHeader>
                     <TitleL>
-                        Cameron Williamson
+                        {user.name}
                     </TitleL>
                     <ExternalLink>
                         GITHUB

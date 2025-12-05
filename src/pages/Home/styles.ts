@@ -5,4 +5,4 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 calc((100% - 54rem) / 2);
-`;
+`; 
