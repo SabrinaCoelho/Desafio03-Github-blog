@@ -12,32 +12,32 @@ export function ProfileCard(){
     console.log(user);
     return(
         <ProfileCardContainer>
-            <UserPicture />
+            <UserPicture imageUrl={user.avatar_url}/>
             <UserInfoContainer>
                 <UserInfoHeader>
                     <TitleL>
                         {user.name}
                     </TitleL>
-                    <ExternalLink>
+                    <ExternalLink githubAccountUrl={user.html_url}>
                         GITHUB
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                     </ExternalLink>
                 </UserInfoHeader>
                 <TextM>
-                    Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
+                    {user.bio}
                 </TextM>
                 <UserLinks>
                     <span>
                         <FontAwesomeIcon icon={faGithub} />
-                        teste
+                        {user.login}
                     </span>
                     <span>
                         <FontAwesomeIcon icon={faBuilding} />
-                        teste
+                        {user.company ?? "-"}
                     </span>
                     <span>
                         <FontAwesomeIcon icon={faUser} />
-                        teste
+                        {user.followers} seguidores
                     </span>
                 </UserLinks>
             </UserInfoContainer>

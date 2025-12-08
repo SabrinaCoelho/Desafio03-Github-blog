@@ -3,10 +3,11 @@ import type { ReactNode } from "react";
 
 interface ExternalLinkProps{
     children: ReactNode;
+    githubAccountUrl?: string;
 }
-export function ExternalLink ({children}: ExternalLinkProps){
+export function ExternalLink ({children, githubAccountUrl = ""}: ExternalLinkProps){
     return(
-        <ExternalLinkContainer>
+        <ExternalLinkContainer target="_blank" href={githubAccountUrl}>
             {children}
         </ExternalLinkContainer>
     )

@@ -6,3 +6,10 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     padding: 0 calc((100% - 54rem) / 2);
 `; 
+
+export const CardsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+`;

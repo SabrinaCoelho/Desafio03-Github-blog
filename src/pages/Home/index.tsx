@@ -1,14 +1,16 @@
 import { Card } from "./Card";
 import { ProfileCard } from "./ProfileCard";
 import { SearchForm } from "./SearchForm";
-import { HomeContainer } from "./styles";
+import { CardsContainer, HomeContainer } from "./styles";
 
 export function Home(){
     return(
         <HomeContainer>
             <ProfileCard />
             <SearchForm/>
-            <Card/>
+            <CardsContainer>
+                <Card/>
+            </CardsContainer>
         </HomeContainer>
     )
 }
