@@ -23,15 +23,22 @@ export const UserPicture = styled.div<ProfilePictureProps>`
     width: 9.25rem;
     margin-left: .5rem;
     border-radius: 8px;
-    background-image: url("https://avatars.githubusercontent.com/u/80803237?v=4");
-    background-size: cover;
-    background-repeat: no-repeat;
+    ${props => {
+        if(props.imageUrl){
+            return `background-image: url(${props.imageUrl});
+                    background-size: cover;
+                    background-repeat: no-repeat;
+            `
+        }
+    }}
+    background-color: ${props => props.theme["base-text"]};
     flex-shrink: 0;
 `;
 
 export const UserInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     h1{
         margin-top: 0.5rem;
