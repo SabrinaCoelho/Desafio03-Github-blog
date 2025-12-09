@@ -46,10 +46,12 @@ export function RepoProvider({children}: RepoProviderProps){
 
     const getRepoIssues = useCallback(
         async (query?: string) =>{
+            const owner = "anuraghazra";
+            const repo = "github-readme-stats";
             console.log(query)
             const res = await api.get("search/issues",{
                 params:{
-                    q: "cloudflare repo:anuraghazra/github-readme-stats is:issue"
+                    q: `${query} repo:${owner}/${repo} is:issue`
                 }
             })
             console.log(res.data.items)
