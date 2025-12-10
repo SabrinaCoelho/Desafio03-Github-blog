@@ -4,8 +4,12 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faAngleLeft, faArrowUpRightFromSquare, faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
 import { TitleL } from "../../../components/Typography/style";
 import { ExternalLink } from "../../../components/ExternalLink";
+import { RepoContext } from "../../../Contexts/RepoContext";
+import { useContext } from "react";
 
 export function PostTitle(){
+    const {actualIssue} = useContext(RepoContext);
+    
     return(
         <PostTitleContainer>
             <PostTitleLinks>
@@ -19,12 +23,12 @@ export function PostTitle(){
                 </ExternalLink>
             </PostTitleLinks>
             <TitleL>
-                JavaScript data types and data structures
+                {actualIssue.title}
             </TitleL>
             <PostTitleInfo>
                 <span>
                     <FontAwesomeIcon icon={faGithub} />
-                    teste
+                    {actualIssue.author}
                 </span>
                 <span>
                     <FontAwesomeIcon icon={faCalendar} />
@@ -32,7 +36,10 @@ export function PostTitle(){
                 </span>
                 <span>
                     <FontAwesomeIcon icon={faComment} />
-                    5 comentários
+                    {actualIssue.comments}
+                    {
+                        actualIssue.comments > 0 ? "comentários" : "comentário"
+                    }
                 </span>
             </PostTitleInfo>
         </PostTitleContainer>

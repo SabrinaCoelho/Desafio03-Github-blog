@@ -7,8 +7,10 @@ export function Router (){
     return (
         <Routes>
             <Route path="/" element={<DefaultLayout />}>
-                <Route path="/" element={<Home />}/>
-                <Route path="post" element={<Post />}/>
+                <Route index element={<Home />}/>
+                <Route path="post">
+                    <Route path=":issueId" element={<Post />}/>
+                </Route>
             </Route>
         </Routes>
     )

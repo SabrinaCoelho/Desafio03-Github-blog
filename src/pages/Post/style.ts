@@ -7,3 +7,6 @@ export const PostContainer = styled.div`
     padding: 0 calc((100% - 54rem) /2);
 `;
 
+export const PostContent = styled.div`
+    padding: 2.5rem 2rem;
+`;

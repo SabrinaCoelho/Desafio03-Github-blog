@@ -4,8 +4,11 @@ import { api } from "../lib/axios";
 
 export interface Issue{
     id: string;
+    author?: string;
     title: string;
     body: string;
+    comments: number;
+    createdAt: string;
 }
 
 interface User{
@@ -21,7 +24,9 @@ interface User{
 interface RepoContextType{
     user: User;
     issues: Issue[];
+    actualIssue: Issue;
     getRepoIssues: (query: string) => Promise<void>;
+    getRepoIssueData: (issueId: string) => Promise<void>;
     /* getRepoOwnerData: () => Promise<void>;
     getRepoIssueData: () => Promise<void>; */
 }
@@ -37,6 +42,7 @@ export function RepoProvider({children}: RepoProviderProps){
 
     const [user, setUser] = useState<User>({} as User);
     const [issues, setIssues] = useState<Issue[]>([]);
+    const [actualIssue, setActualIssue] = useState<Issue>({} as Issue);
 
     const getRepoOwnerData = useCallback(
         async () => {
@@ -49,16 +55,41 @@ export function RepoProvider({children}: RepoProviderProps){
             const owner = "anuraghazra";
             const repo = "github-readme-stats";
             console.log(query)
-            const res = await api.get("search/issues",{
+           /* const res = await api.get("search/issues",{
                 params:{
                     q: `${query} repo:${owner}/${repo} is:issue`
                 }
-            })
+            }) 
             console.log(res.data.items)
-            setIssues(res.data.items)
+            setIssues(res.data.items) */
+            setIssues([])
         }, []
     )
 
+    const getRepoIssueData = useCallback(
+        async (issueId: string) => {
+            const owner = "anuraghazra";
+            const repo = "github-readme-stats";
+            const res = await api.get(`repos/${owner}/${repo}/issues/${issueId}`);
+            const {
+                number,
+                login, 
+                title, 
+                body, 
+                comments, 
+                created_at
+            } = res.data;
+            
+            setActualIssue({
+                id: number, 
+                author: login,
+                title, 
+                body,
+                comments,
+                createdAt: created_at
+            });
+        }, []
+    );
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         getRepoOwnerData();
@@ -69,7 +100,9 @@ export function RepoProvider({children}: RepoProviderProps){
         <RepoContext.Provider value={{
             user,
             issues,
-            getRepoIssues
+            actualIssue,
+            getRepoIssues,
+            getRepoIssueData
         }}>
             {children}
         </RepoContext.Provider>
