@@ -22,4 +22,13 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1rem Nunito, Sans-serif;
         line-height: 160%;
     }
+    .postContainer, 
+    .postContainer * {
+        /* Reverte a margem e o preenchimento para o valor padrão do navegador ou do usuário (se houver) */
+        margin: revert;
+        padding: revert;
+        
+        /* Reverte box-sizing para o padrão do CSS: content-box */
+        box-sizing: revert; 
+    }
 `;

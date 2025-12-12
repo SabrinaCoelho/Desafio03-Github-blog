@@ -2,8 +2,15 @@ import { useParams } from "react-router-dom";
 import { PostTitle } from "./PostTitle";
 import { PostContainer, PostContent } from "./style";
 import { RepoContext } from "../../Contexts/RepoContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Markdown from "react-markdown";
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import rehypeHighlight from 'rehype-highlight';
+/* import rehypeParse from 'rehype-parse';
+import rehypeStringify from 'rehype-stringify';
+import { unified } from "unified"; */
 
 export function Post(){
     const {getRepoIssueData, actualIssue} = useContext(RepoContext);
@@ -21,11 +28,33 @@ export function Post(){
     return(
         <PostContainer>
             <PostTitle />
-            <PostContent>
-                <Markdown>
-                    {body}
-                </Markdown>
-            </PostContent>
+                <PostContent className="postContainer">
+                    {/* <Markdown rehypePlugins={[[rehypeHighlight, {detect: true}]]}>
+                        {body}
+                    </Markdown> */}
+                    <Markdown
+                        children={body}
+                        components={{
+                        code(props) {
+                            const {children, className, node, ...rest} = props
+                            const match = /language-(\w+)/.exec(className || '')
+                            return match ? (
+                            <SyntaxHighlighter
+                                {...rest}
+                                PreTag="div"
+                                children={String(children).replace(/\n$/, '')}
+                                language={match[1]}
+                                style={dark}
+                            />
+                            ) : (
+                            <code {...rest} className={className}>
+                                {children}
+                            </code>
+                            )
+                        }
+                        }}
+                    />
+                </PostContent>
         </PostContainer>
     );
 }

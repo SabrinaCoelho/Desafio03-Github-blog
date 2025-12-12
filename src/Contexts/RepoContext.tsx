@@ -52,10 +52,10 @@ export function RepoProvider({children}: RepoProviderProps){
 
     const getRepoIssues = useCallback(
         async (query?: string) =>{
-            const owner = "anuraghazra";
+            /* const owner = "anuraghazra";
             const repo = "github-readme-stats";
             console.log(query)
-           /* const res = await api.get("search/issues",{
+           const res = await api.get("search/issues",{
                 params:{
                     q: `${query} repo:${owner}/${repo} is:issue`
                 }
