@@ -6,10 +6,12 @@ import { TitleL } from "../../../components/Typography/style";
 import { ExternalLink } from "../../../components/ExternalLink";
 import { RepoContext } from "../../../Contexts/RepoContext";
 import { useContext } from "react";
+import {formatDistanceToNow } from "date-fns";
+import { ptBR } from 'date-fns/locale';
 
 export function PostTitle(){
     const {actualIssue} = useContext(RepoContext);
-    
+    console.log(actualIssue)
     return(
         <PostTitleContainer>
             <PostTitleLinks>
@@ -17,7 +19,7 @@ export function PostTitle(){
                     <FontAwesomeIcon icon={faAngleLeft} />
                     VOLTAR
                 </ExternalLink>
-                <ExternalLink>
+                <ExternalLink githubAccountUrl={actualIssue.url}>
                     VER NO GITHUB
                     <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                 </ExternalLink>
@@ -32,13 +34,18 @@ export function PostTitle(){
                 </span>
                 <span>
                     <FontAwesomeIcon icon={faCalendar} />
-                    Há 3 dias
+                    {
+                        formatDistanceToNow(new Date(actualIssue.created_at), { 
+                            locale: ptBR,
+                            addSuffix: true
+                        })
+                    }
                 </span>
                 <span>
                     <FontAwesomeIcon icon={faComment} />
                     {actualIssue.comments}
                     {
-                        actualIssue.comments > 0 ? "comentários" : "comentário"
+                        actualIssue.comments > 0 ? " comentários" : " comentário"
                     }
                 </span>
             </PostTitleInfo>

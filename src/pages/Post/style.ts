@@ -9,10 +9,4 @@ export const PostContainer = styled.div`
 
 export const PostContent = styled.div`
     padding: 2.5rem 2rem;
-
-    pre{
-        padding: 1rem;
-        background-color: ${props => props.theme["base-post"]};
-        border-radius: 2px;
-    }
 `;

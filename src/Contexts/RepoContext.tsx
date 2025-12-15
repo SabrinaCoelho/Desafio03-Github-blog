@@ -4,11 +4,13 @@ import { api } from "../lib/axios";
 
 export interface Issue{
     id: string;
+    number: string;
     author?: string;
     title: string;
     body: string;
     comments: number;
-    createdAt: string;
+    url: string;
+    created_at: string;
 }
 
 interface User{
@@ -41,7 +43,7 @@ export const RepoContext = createContext({} as RepoContextType);
 export function RepoProvider({children}: RepoProviderProps){
 
     const [user, setUser] = useState<User>({} as User);
-    const [issues, setIssues] = useState<Issue[]>([]);
+    const [issues, setIssues] = useState<Issue[]>([] as Issue[]);
     const [actualIssue, setActualIssue] = useState<Issue>({} as Issue);
 
     const getRepoOwnerData = useCallback(
@@ -52,17 +54,17 @@ export function RepoProvider({children}: RepoProviderProps){
 
     const getRepoIssues = useCallback(
         async (query?: string) =>{
-            /* const owner = "anuraghazra";
+            const owner = "anuraghazra";
             const repo = "github-readme-stats";
             console.log(query)
-           const res = await api.get("search/issues",{
+            const res = await api.get("search/issues",{
                 params:{
-                    q: `${query} repo:${owner}/${repo} is:issue`
+                    q: `${query ?? ""} repo:${owner}/${repo} is:issue`
                 }
             }) 
             console.log(res.data.items)
-            setIssues(res.data.items) */
-            setIssues([])
+            setIssues(res.data.items)
+            // setIssues([])
         }, []
     )
 
@@ -71,22 +73,36 @@ export function RepoProvider({children}: RepoProviderProps){
             const owner = "anuraghazra";
             const repo = "github-readme-stats";
             const res = await api.get(`repos/${owner}/${repo}/issues/${issueId}`);
+            
             const {
+                id,
                 number,
-                login, 
+                user, 
                 title, 
                 body, 
                 comments, 
+                html_url,
                 created_at
             } = res.data;
-            
+            console.log({
+                id,
+                number,
+                user, 
+                title, 
+                body, 
+                comments, 
+                html_url,
+                created_at
+            })
             setActualIssue({
-                id: number, 
-                author: login,
+                id, 
+                number,
+                author: user.login,
                 title, 
                 body,
                 comments,
-                createdAt: created_at
+                url: html_url,
+                created_at
             });
         }, []
     );

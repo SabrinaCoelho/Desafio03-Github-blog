@@ -11,15 +11,17 @@ export const CardContainer = styled.div`
 `;
 export const RelativeDate = styled.div`
     flex-shrink: 0;
-    margin-top: 0%.3125rem;
+    margin-top: 0.3125rem;
 `;
 
 export const CardHeader = styled.div`
     display: flex;
     gap: 1rem;
     margin-bottom: 1.25rem;
+    justify-content: space-between;
 `;
 export const CardDescription = styled.div`
     flex: 1;
     overflow: hidden;
+    color: ${props => props.theme["base-text"]};
 `;
