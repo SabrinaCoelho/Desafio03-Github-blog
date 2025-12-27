@@ -4,11 +4,16 @@ import { faArrowUpRightFromSquare, faBuilding, faUser } from '@fortawesome/free-
 import { TextM, TitleL, TitleM } from "../../../components/Typography/style";
 import { ProfileCardContainer, UserLinks, UserPicture, UserInfoContainer, UserInfoHeader } from "./style";
 import { ExternalLink } from "../../../components/ExternalLink";
-import { useContext } from "react";
 import { RepoContext } from "../../../Contexts/RepoContext";
+import { useContextSelector } from "use-context-selector";
 
 export function ProfileCard(){
-    const {user, isError } = useContext(RepoContext);
+    const {user, isError } = useContextSelector(RepoContext, context => {
+        return {
+            user: context.user,
+            isError: context.isError
+        }
+    });
     return(
         <ProfileCardContainer>
             {

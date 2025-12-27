@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { TextS, TitleL } from "../../../components/Typography/style";
 import { CardContainer, CardDescription, CardHeader, RelativeDate } from "./style";
 import { RepoContext, type Issue } from "../../../Contexts/RepoContext";
@@ -6,9 +5,10 @@ import Markdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { useContextSelector } from "use-context-selector";
 
 export function Card(){
-    const {issues} = useContext(RepoContext);
+    const issues = useContextSelector(RepoContext, context => context.issues);
     return(
         <>
             {

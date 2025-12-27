@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContextSelector } from "use-context-selector";
 import { TitleM } from "../../components/Typography/style";
 import { RepoContext } from "../../Contexts/RepoContext";
 import { useIsScrollAtBottom } from "../../hook/useIsScrollAtBottom";
@@ -11,8 +11,25 @@ import { ptBR } from "date-fns/locale";
 
 export function Home(){
     const isAtBottom = useIsScrollAtBottom();
-    const {updatePage, isRateLimitExpired, rateLimitReset, loading, isError, isFetchJustCalled, fetchJustCalled} = useContext(RepoContext);
-
+    const { 
+        updatePage, 
+        loading, 
+        isError, 
+        isRateLimitExpired, 
+        rateLimitReset, 
+        isFetchJustCalled, 
+        fetchJustCalled 
+    } = useContextSelector(RepoContext, context => {
+        return {
+            updatePage: context.updatePage,
+            loading: context.loading,
+            isError: context.isError,
+            isRateLimitExpired: context.isRateLimitExpired,
+            rateLimitReset: context.rateLimitReset,
+            isFetchJustCalled: context.isFetchJustCalled,
+            fetchJustCalled: context.fetchJustCalled,
+        }
+    });
     if(isAtBottom && !isError && !loading){
         
         if(isRateLimitExpired){

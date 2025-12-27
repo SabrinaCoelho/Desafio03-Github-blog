@@ -2,14 +2,21 @@ import { useParams } from "react-router-dom";
 import { PostTitle } from "./PostTitle";
 import { PostContainer, PostContent } from "./style";
 import { RepoContext } from "../../Contexts/RepoContext";
-import { useContext, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { TitleM } from "../../components/Typography/style";
+import { useContextSelector } from "use-context-selector";
 
 export function Post(){
-    const {getRepoIssueData, actualIssue, isError} = useContext(RepoContext);
+    const {getRepoIssueData, actualIssue, isError} = useContextSelector(RepoContext, context => {
+      return{
+        getRepoIssueData: context.getRepoIssueData,
+        actualIssue: context.actualIssue,
+        isError: context.isError
+      }
+    });
     const {issueId} = useParams();
     const [loaded, setLoaded] = useState(false);
 

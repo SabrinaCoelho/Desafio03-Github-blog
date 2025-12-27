@@ -5,13 +5,13 @@ import { faAngleLeft, faArrowUpRightFromSquare, faCalendar, faComment } from "@f
 import { TitleL } from "../../../components/Typography/style";
 import { ExternalLink } from "../../../components/ExternalLink";
 import { RepoContext } from "../../../Contexts/RepoContext";
-import { useContext } from "react";
 import {formatDistanceToNow } from "date-fns";
 import { ptBR } from 'date-fns/locale';
 import { useNavigate } from "react-router-dom";
+import { useContextSelector } from "use-context-selector";
 
 export function PostTitle(){
-    const {actualIssue} = useContext(RepoContext);
+    const actualIssue = useContextSelector(RepoContext, context => context.actualIssue);
     
     const navigate = useNavigate();
     return(

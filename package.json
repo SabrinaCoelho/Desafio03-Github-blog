@@ -29,7 +29,8 @@
     "remark-code-blocks": "^2.0.1",
     "remark-gfm": "^4.0.1",
     "styled-components": "^6.1.19",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "use-context-selector": "^2.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
