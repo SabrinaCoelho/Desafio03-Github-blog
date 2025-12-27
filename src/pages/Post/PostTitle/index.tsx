@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PostTitleContainer, PostTitleInfo, PostTitleLinks } from "./style";
+import { PostTitleContainer, PostTitleInfo, PostTitleLinks, TitleBackButton } from "./style";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faAngleLeft, faArrowUpRightFromSquare, faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
 import { TitleL } from "../../../components/Typography/style";
@@ -8,17 +8,19 @@ import { RepoContext } from "../../../Contexts/RepoContext";
 import { useContext } from "react";
 import {formatDistanceToNow } from "date-fns";
 import { ptBR } from 'date-fns/locale';
+import { useNavigate } from "react-router-dom";
 
 export function PostTitle(){
     const {actualIssue} = useContext(RepoContext);
-    console.log(actualIssue)
+    
+    const navigate = useNavigate();
     return(
         <PostTitleContainer>
             <PostTitleLinks>
-                <ExternalLink>
-                    <FontAwesomeIcon icon={faAngleLeft} />
+                <TitleBackButton onClick={() => navigate(-1)}>
+                    <FontAwesomeIcon icon={faAngleLeft}/>
                     VOLTAR
-                </ExternalLink>
+                </TitleBackButton>
                 <ExternalLink githubAccountUrl={actualIssue.url}>
                     VER NO GITHUB
                     <FontAwesomeIcon icon={faArrowUpRightFromSquare} />

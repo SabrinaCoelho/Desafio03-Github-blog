@@ -9,14 +9,13 @@ import { ptBR } from "date-fns/locale";
 
 export function Card(){
     const {issues} = useContext(RepoContext);
-    console.log(issues)
     return(
         <>
             {
                 issues && issues.map((issue: Issue) => {
                     return(
-                        <Link to={`post/${issue.number}`}> 
-                            <CardContainer key={issue.id}>
+                        <Link to={`post/${issue.number}`} key={issue.id}> 
+                            <CardContainer>
                                 <CardHeader>
                                     <TitleL>
                                         {issue.title}
@@ -34,7 +33,7 @@ export function Card(){
                                 </CardHeader>
                                 <CardDescription>
                                     <Markdown>
-                                        {issue.body}
+                                        {issue.body && issue.body.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')}
                                     </Markdown>
                                 </CardDescription>
                             </CardContainer>

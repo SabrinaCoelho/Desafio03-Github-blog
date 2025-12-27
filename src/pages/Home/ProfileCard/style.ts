@@ -61,6 +61,7 @@ export const UserInfoHeader = styled.div`
 export const UserLinks = styled.div`
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
 
     span{
         display: flex;
